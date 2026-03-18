@@ -1,4 +1,4 @@
-module Tun2SocksKitC {
+module ShadeNetworkTunnelC {
     umbrella header "Tun2SocksKitC.h"
     export *
 }

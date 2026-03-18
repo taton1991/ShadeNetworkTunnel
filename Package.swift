@@ -3,24 +3,26 @@
 import PackageDescription
 
 let package = Package(
-  name: "Tun2SocksKit",
+  name: "ShadeNetworkTunnel",
   products: [
     .library(
-        name: "Tun2SocksKit",
-        targets: ["Tun2SocksKit"]
+        name: "ShadeNetworkTunnel",
+        targets: ["ShadeNetworkTunnel"]
     ),
     .library(
-        name: "Tun2SocksKitC",
-        targets: ["Tun2SocksKitC"]
+        name: "ShadeNetworkTunnelC",
+        targets: ["ShadeNetworkTunnelC"]
     )
   ],
   targets: [
     .target(
-        name: "Tun2SocksKit",
-        dependencies: ["HevSocks5Tunnel", "Tun2SocksKitC"]
+        name: "ShadeNetworkTunnel",
+        dependencies: ["HevSocks5Tunnel", "ShadeNetworkTunnelC"],
+        path: "Sources/Tun2SocksKit"
     ),
     .target(
-        name: "Tun2SocksKitC",
+        name: "ShadeNetworkTunnelC",
+        path: "Sources/Tun2SocksKitC",
         publicHeadersPath: "."
     ),
     .binaryTarget(
