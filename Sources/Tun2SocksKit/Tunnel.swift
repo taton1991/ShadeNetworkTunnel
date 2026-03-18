@@ -1,6 +1,6 @@
 import Foundation
 import ShadeNetworkTunnelC
-import HevSocks5Tunnel
+@_exported import HevSocks5Tunnel
 
 public enum Socks5Tunnel {
 
@@ -62,6 +62,11 @@ public enum Socks5Tunnel {
         guard let fileDescriptor = tunnelFileDescriptor else {
             return -1
         }
+        return run(withConfig: config, fd: fileDescriptor)
+    }
+
+    /// Run tunnel with an explicit file descriptor (e.g. from socketpair).
+    public static func run(withConfig config: Config, fd fileDescriptor: Int32) -> Int32 {
         switch config {
         case .file(let path):
             return hev_socks5_tunnel_main(path.path.cString(using: .utf8), fileDescriptor)
